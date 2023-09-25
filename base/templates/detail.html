@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Blog - Your Website{% endblock %}
+{% block content %}
+
+<h1>{{news.title}}</h1>
+<p>{{news.description}}</p>
+<br>
+
+{% for x in comments %}
+<p>{{x.text}}</p>
+{% endfor %}
+
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Comment" />
+</form>
+
+</section>
+{% endblock %}

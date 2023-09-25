@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}News Blog{% endblock %}
+{% block content %}
+<section class="blog-posts">
+    <!-- Example blog posts go here -->
+    <article>
+        <h1>Welcome, {{request.user}}</h1>
+        {% for x in news %}
+        <h2>{{x.title}}</h2>
+        <p>{{x.description}}</p>
+        <p>{{x.date_created}}</p>
+        <a href="{% url 'detail' x.id %}">Read more</a>
+        {% endfor %}
+    </article>
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Add" />
+</form>
+</section>
+{% endblock %}
